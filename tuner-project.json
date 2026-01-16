@@ -1,0 +1,232 @@
+{
+  "Version": "1.0.0.0",
+  "LastState": 11,
+  "Modules": [
+    {
+      "ModuleName": "Front Left",
+      "ModuleId": 0,
+      "Encoder": {
+        "Id": 4,
+        "Name": "CANCoderNFL",
+        "Model": "CANCoder vers. H",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": null
+      },
+      "SteerMotor": {
+        "Id": 3,
+        "Name": "RotateNFL",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "DriveMotor": {
+        "Id": 11,
+        "Name": "DriveNFL",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "IsEncoderInverted": false,
+      "IsSteerInverted": true,
+      "SelectedEncoderType": "CANcoder",
+      "EncoderOffset": 0.36962890625,
+      "DriveMotorSelectionState": 1,
+      "SteerMotorSelectionState": 1,
+      "SteerEncoderSelectionState": 1,
+      "IsModuleValidationComplete": true,
+      "ValidatedSteerId": 3,
+      "ValidatedDriveId": 11,
+      "ValidatedEncoderId": 4
+    },
+    {
+      "ModuleName": "Front Right",
+      "ModuleId": 1,
+      "Encoder": {
+        "Id": 7,
+        "Name": "CANCoderNFR",
+        "Model": "CANCoder",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": null
+      },
+      "SteerMotor": {
+        "Id": 2,
+        "Name": "RotateNFR",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "DriveMotor": {
+        "Id": 13,
+        "Name": "DriveNFR",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "IsEncoderInverted": false,
+      "IsSteerInverted": true,
+      "SelectedEncoderType": "CANcoder",
+      "EncoderOffset": -0.341552734375,
+      "DriveMotorSelectionState": 1,
+      "SteerMotorSelectionState": 1,
+      "SteerEncoderSelectionState": 1,
+      "IsModuleValidationComplete": true,
+      "ValidatedSteerId": 2,
+      "ValidatedDriveId": 13,
+      "ValidatedEncoderId": 7
+    },
+    {
+      "ModuleName": "Back Left",
+      "ModuleId": 2,
+      "Encoder": {
+        "Id": 5,
+        "Name": "CANCoderNBL",
+        "Model": "CANCoder",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": null
+      },
+      "SteerMotor": {
+        "Id": 0,
+        "Name": "RotateNBL",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "DriveMotor": {
+        "Id": 10,
+        "Name": "DriveNBL",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "IsEncoderInverted": false,
+      "IsSteerInverted": true,
+      "SelectedEncoderType": "CANcoder",
+      "EncoderOffset": 0.34423828125,
+      "DriveMotorSelectionState": 1,
+      "SteerMotorSelectionState": 1,
+      "SteerEncoderSelectionState": 1,
+      "IsModuleValidationComplete": true,
+      "ValidatedSteerId": 0,
+      "ValidatedDriveId": 10,
+      "ValidatedEncoderId": 5
+    },
+    {
+      "ModuleName": "Back Right",
+      "ModuleId": 3,
+      "Encoder": {
+        "Id": 6,
+        "Name": "CANCoderNBR",
+        "Model": "CANCoder",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": null
+      },
+      "SteerMotor": {
+        "Id": 1,
+        "Name": "RotateNBR",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "DriveMotor": {
+        "Id": 12,
+        "Name": "DriveNBR",
+        "Model": "Talon FX",
+        "CANbus": "rio",
+        "CANbusFriendly": "",
+        "SelectedMotorType": {
+          "Name": "WCP Kraken x60",
+          "FreeSpeedRps": 96.7,
+          "SlipCurrentLimit": 120,
+          "StatorCurrentLimit": 60
+        }
+      },
+      "IsEncoderInverted": false,
+      "IsSteerInverted": true,
+      "SelectedEncoderType": "CANcoder",
+      "EncoderOffset": 0.288818359375,
+      "DriveMotorSelectionState": 1,
+      "SteerMotorSelectionState": 1,
+      "SteerEncoderSelectionState": 1,
+      "IsModuleValidationComplete": true,
+      "ValidatedSteerId": 1,
+      "ValidatedDriveId": 12,
+      "ValidatedEncoderId": 6
+    }
+  ],
+  "SwerveOptions": {
+    "Gyro": {
+      "Id": 30,
+      "Name": "Drive Pidgey",
+      "Model": "Pigeon 2",
+      "CANbus": "rio",
+      "CANbusFriendly": "",
+      "SelectedMotorType": null
+    },
+    "IsValidGyroCANbus": true,
+    "VerticalTrackSizeInches": 20.0,
+    "HorizontalTrackSizeInches": 19.5,
+    "WheelRadiusInches": 1.9,
+    "IsLeftSideInverted": true,
+    "IsRightSideInverted": false,
+    "SwerveModuleType": 4,
+    "SwerveModuleConfiguration": {
+      "ModuleBrand": 4,
+      "DriveRatio": 6.122448979591837,
+      "SteerRatio": 21.428571428571427,
+      "CouplingRatio": 3.5714285714285716,
+      "CustomName": "L3"
+    },
+    "HasVerifiedSteer": true,
+    "SelectedModuleManufacturer": "Swerve Drive Specialties (SDS)",
+    "HasVerifiedDrive": true,
+    "IsValidConfiguration": true
+  },
+  "TeamNumber": 9997,
+  "schema_version": "1"
+}
