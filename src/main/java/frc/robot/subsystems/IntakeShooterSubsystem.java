@@ -33,10 +33,8 @@ public class IntakeShooterSubsystem implements Subsystem {
         shooterSlot0Config.kG = Constants.IntakeShooter.G;
 
         
-
         hopperFeeder.getConfigurator().apply(intakeConfig);
         intakeShooter.getConfigurator().apply(shooterConfig);
-        
     }
 
     public void setIntakeSpeed(double speed){
@@ -52,6 +50,10 @@ public class IntakeShooterSubsystem implements Subsystem {
         intakeShooter.set(0);
         hopperFeeder.set(0);
         
+    }
+
+    public double getShooterVelocity(){
+        return intakeShooter.getVelocity().getValueAsDouble();
     }
 }
             
