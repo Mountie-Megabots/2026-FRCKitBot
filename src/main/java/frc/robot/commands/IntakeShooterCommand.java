@@ -5,6 +5,7 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.Constants;
 import frc.robot.subsystems.IntakeShooterSubsystem;
 
@@ -12,9 +13,10 @@ public class IntakeShooterCommand extends Command {
     IntakeShooterSubsystem intake;
     DoubleSupplier intakeSpeed;
     DoubleSupplier shootSpeed;
+    double setFeedSpeed = 0;
     
 
-    public IntakeShooterCommand(IntakeShooterSubsystem intake, DoubleSupplier intakeSpeed, DoubleSupplier shootSpeed) {
+    public IntakeShooterCommand(IntakeShooterSubsystem intake) {
         this.intakeSpeed = intakeSpeed;
         this.shootSpeed = shootSpeed;
         this.intake = intake;
@@ -23,21 +25,7 @@ public class IntakeShooterCommand extends Command {
     }
 
     public void execute() {
-        // Intake
-        if (intakeSpeed.getAsDouble() > shootSpeed.getAsDouble()) {
-                intake.setIntakeSpeed(Constants.IntakeShooter.lowSpeed);
-                intake.setFeederSpeed(-intakeSpeed.getAsDouble()/2); 
-            // Shoot
-        } else if(intakeSpeed.getAsDouble() < shootSpeed.getAsDouble()){
-            if (Math.abs(intake.getShooterVelocity()) > Math.abs((Constants.IntakeShooter.highSpeed*.95))) {
-                intake.setFeederSpeed(shootSpeed.getAsDouble());
-            }
-            intake.setIntakeSpeed(Constants.IntakeShooter.highSpeed);
-        } else {
-            intake.setFeederSpeed(0);
-            intake.setIntakeSpeed(0);
-        }
-
+        intake.runStateMachine();
     }
 
     public void end() {

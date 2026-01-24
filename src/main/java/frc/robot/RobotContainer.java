@@ -13,6 +13,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -86,9 +87,11 @@ public class RobotContainer {
         // Reset the field-centric heading on left bumper press.
         joystick.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
         
-
-        intake.setDefaultCommand(
-                new IntakeShooterCommand(intake, joystick::getLeftTriggerAxis, joystick::getRightTriggerAxis));
+        joystick.leftTrigger().onTrue(intake.setIntakeStateCommand());
+        joystick.rightBumper().onTrue(intake.setShootStateCommand());
+        joystick.rightTrigger().whileTrue(intake.setFeedSpeed(joystick::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
+        
+        intake.setDefaultCommand(new IntakeShooterCommand(intake));
 
         drivetrain.registerTelemetry(logger::telemeterize);
     }
