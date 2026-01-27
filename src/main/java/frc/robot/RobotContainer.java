@@ -43,7 +43,7 @@ public class RobotContainer {
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
     public final IntakeShooterSubsystem intake = new IntakeShooterSubsystem();
-
+    public final AutoCommands auto;
     public RobotContainer() {
         // Set up port forwarding for Limelight
         // Access the web interface at http://172.22.11.2:5800 on your laptop (when
@@ -51,6 +51,7 @@ public class RobotContainer {
         PortForwarder.add(5800, "limelight.local", 5800);
         // Add other necessary ports, e.g., 5801 for video stream if needed
         PortForwarder.add(5801, "limelight.local", 5801);
+        auto = new AutoCommands();
         configureBindings();
     }
 
@@ -97,18 +98,6 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        // Simple drive forward auton
-        final var idle = new SwerveRequest.Idle();
-        return Commands.sequence(
-                // Reset our field centric heading to match the robot
-                // facing away from our alliance station wall (0 deg).
-                drivetrain.runOnce(() -> drivetrain.seedFieldCentric(Rotation2d.kZero)),
-                // Then slowly drive forward (away from us) for 5 seconds.
-                drivetrain.applyRequest(() -> drive.withVelocityX(0.5)
-                        .withVelocityY(0)
-                        .withRotationalRate(0))
-                        .withTimeout(5.0),
-                // Finally idle for the rest of auton
-                drivetrain.applyRequest(() -> idle));
+        return auto.getAutonomousCommand();
     }
 }
