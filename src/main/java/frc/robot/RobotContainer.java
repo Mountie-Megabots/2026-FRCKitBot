@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.net.PortForwarder;
@@ -51,7 +52,11 @@ public class RobotContainer {
         PortForwarder.add(5800, "limelight.local", 5800);
         // Add other necessary ports, e.g., 5801 for video stream if needed
         PortForwarder.add(5801, "limelight.local", 5801);
-        auto = new AutoCommands();
+
+
+        auto = new AutoCommands(intake);
+        NamedCommands.registerCommand("Shoot", intake.setShootStateCommand());
+
         configureBindings();
     }
 
