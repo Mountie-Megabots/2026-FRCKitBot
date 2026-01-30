@@ -54,7 +54,7 @@ public class RobotContainer {
         PortForwarder.add(5801, "limelight.local", 5801);
 
 
-        auto = new AutoCommands(intake);
+        auto = new AutoCommands(intake, drivetrain);
         NamedCommands.registerCommand("Shoot", intake.setShootStateCommand());
 
         configureBindings();
