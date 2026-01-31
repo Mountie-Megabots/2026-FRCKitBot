@@ -81,7 +81,7 @@ public class RobotContainer {
         RobotModeTriggers.disabled().whileTrue(
                 drivetrain.applyRequest(() -> idle).ignoringDisable(true));
 
-        Trigger aimAtHub = joystick.a().whileTrue(new DriveAndAimAtHubCommand(drivetrain, joystick::getLeftX, joystick::getLeftY));
+        Trigger aimAtHub = joystick.a().whileTrue(new DriveAndAimAtHubCommand(drivetrain, joystick::getLeftY, joystick::getLeftX));
 
         joystick.b().whileTrue(drivetrain.applyRequest(
                 () -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));

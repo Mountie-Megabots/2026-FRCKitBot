@@ -50,7 +50,8 @@ public class DriveAndAimAtHubCommand extends Command {
     private final SwerveRequest.FieldCentricFacingAngle drive =
             new SwerveRequest.FieldCentricFacingAngle()
                     .withDriveRequestType(DriveRequestType.OpenLoopVoltage)
-                    .withSteerRequestType(SteerRequestType.MotionMagicExpo);
+                    .withSteerRequestType(SteerRequestType.MotionMagicExpo)
+                    .withHeadingPID(10, 0,0);
 
     public DriveAndAimAtHubCommand(
             CommandSwerveDrivetrain drivetrain,
@@ -96,7 +97,7 @@ public class DriveAndAimAtHubCommand extends Command {
         } else {
             hubPosition = Constants.FieldConstants.redHubPosition;
             allianceInversionFactor = -1;
-            allianceOffsetDeg = 180;
+            allianceOffsetDeg = 0;
         }
     }
 
@@ -138,9 +139,12 @@ public class DriveAndAimAtHubCommand extends Command {
          *  - Apply alliance inversion
          *  - Rotate by the robot's current rotation
          */
-        Translation2d translation = new Translation2d(xSpeed.getAsDouble()*Constants.DriveConstants.maxSpeed*allianceInversionFactor, 
-            ySpeed.getAsDouble()*Constants.DriveConstants.maxSpeed*allianceInversionFactor)
-            .rotateBy(Rotation2d.fromDegrees(angleToHubRad));
+        double yVelocity = ySpeed.getAsDouble()*Constants.DriveConstants.maxSpeed*allianceInversionFactor;
+        double xVelocity = xSpeed.getAsDouble()*Constants.DriveConstants.maxSpeed*allianceInversionFactor;
+
+        Translation2d translation = new Translation2d(xVelocity, 
+            yVelocity)
+            .rotateBy(robotPose.getRotation());
 
         /*
          * TODO 7: Send the command to the drivetrain
@@ -152,9 +156,9 @@ public class DriveAndAimAtHubCommand extends Command {
          */
         drivetrain.setControl(
                 drive
-                    .withVelocityX(translation.getX())
-                    .withVelocityY(translation.getY())
-                    .withTargetDirection(translation.getAngle())
+                    .withVelocityX(xVelocity)
+                    .withVelocityY(yVelocity)
+                    .withTargetDirection(Rotation2d.fromRadians(angleToHubRad).plus(Rotation2d.fromDegrees(allianceOffsetDeg)))
         );
     }
 }
