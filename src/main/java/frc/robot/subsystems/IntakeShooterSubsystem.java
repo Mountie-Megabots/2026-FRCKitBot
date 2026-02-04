@@ -46,7 +46,11 @@ public class IntakeShooterSubsystem implements Subsystem {
 
         hopperFeeder.getConfigurator().apply(intakeConfig);
         intakeShooter.getConfigurator().apply(shooterConfig);
+
+        
     }
+
+    
 
     public void runStateMachine() {
         switch (currentState) {
@@ -56,8 +60,8 @@ public class IntakeShooterSubsystem implements Subsystem {
                 break;
 
             case intake:
-                setIntakeSpeed(0.75);
-                setFeederSpeed(-0.75);
+                setIntakeSpeed(0.5);
+                setFeederSpeed(-0.5);
                 break;
 
             case shoot:
@@ -87,6 +91,14 @@ public class IntakeShooterSubsystem implements Subsystem {
         }
     }
 
+    public void setNeutral(){
+        currentState = intakeState.neutral;
+    }
+
+    public Command setNeutralCommand() {
+        return new InstantCommand(this::setNeutral);
+    }
+
     public Command setIntakeStateCommand() {
         return new InstantCommand(() -> setIntakeState());
     }
@@ -95,8 +107,8 @@ public class IntakeShooterSubsystem implements Subsystem {
         return new InstantCommand(() -> setShootState());
     }
 
-    public RunCommand setFeedSpeed(DoubleSupplier speed) {
-        return new RunCommand(() -> feedSpeed = speed.getAsDouble());
+    public InstantCommand setFeedSpeed(DoubleSupplier speed) {
+        return new InstantCommand(() -> feedSpeed = speed.getAsDouble());
     }
 
 

@@ -27,6 +27,36 @@
           "data": {
             "waitTime": 5.0
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeBack"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeBackReturn"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootPrep"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
         }
       ]
     }

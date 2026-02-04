@@ -24,6 +24,7 @@ public class AutoCommands {
         
         NamedCommands.registerCommand("ShootPrep", intake.setShootStateCommand());
         NamedCommands.registerCommand("Shoot", intake.setFeedSpeed(() -> 1.0));
+        NamedCommands.registerCommand("Intake", intake.setIntakeStateCommand());
         autoChooser = AutoBuilder.buildAutoChooser();
         //Frame size: Inches
         autoChooser.addOption("CheckWheelRadius", new CheckWheelRadiusCommand(drive, () -> 13.25));

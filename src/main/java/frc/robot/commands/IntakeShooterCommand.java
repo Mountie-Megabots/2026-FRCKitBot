@@ -24,6 +24,12 @@ public class IntakeShooterCommand extends Command {
         this.addRequirements(intake);
     }
 
+    @Override
+    public void initialize() {
+        intake.setNeutral();
+    }
+
+    @Override
     public void execute() {
         intake.runStateMachine();
     }
