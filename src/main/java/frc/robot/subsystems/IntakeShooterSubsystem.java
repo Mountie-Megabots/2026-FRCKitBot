@@ -10,6 +10,7 @@ import com.ctre.phoenix6.controls.ControlRequest;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -53,6 +54,7 @@ public class IntakeShooterSubsystem implements Subsystem {
     
 
     public void runStateMachine() {
+        SmartDashboard.putNumber("Shooter Speed", Math.abs(getShooterVelocity()));
         switch (currentState) {
             case neutral:
                 setIntakeSpeed(0);
@@ -61,13 +63,15 @@ public class IntakeShooterSubsystem implements Subsystem {
 
             case intake:
                 setIntakeSpeed(0.5);
-                setFeederSpeed(-0.5);
+                setFeederSpeed(-0.3);
                 break;
 
             case shoot:
                 setIntakeVelocity(Constants.IntakeShooter.highSpeed);
-                if (Math.abs(getShooterVelocity()) > Math.abs((Constants.IntakeShooter.highSpeed * .95))) {
+                if (Math.abs(getShooterVelocity()) > Math.abs((Constants.IntakeShooter.highSpeed * .8))) {
                     setFeederSpeed(feedSpeed);
+                } else {
+                    setFeederSpeed(0);
                 }
                 break;
         }
@@ -107,8 +111,8 @@ public class IntakeShooterSubsystem implements Subsystem {
         return new InstantCommand(() -> setShootState());
     }
 
-    public InstantCommand setFeedSpeed(DoubleSupplier speed) {
-        return new InstantCommand(() -> feedSpeed = speed.getAsDouble());
+    public RunCommand setFeedSpeed(DoubleSupplier speed) {
+        return new RunCommand(() -> feedSpeed = speed.getAsDouble());
     }
 
 

@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.CheckWheelRadiusCommand;
 import frc.robot.commands.DriveAndAimAtHubCommand;
 import frc.robot.commands.IntakeShooterCommand;
+import frc.robot.commands.OsscilateCommand;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeShooterSubsystem;
@@ -42,6 +43,7 @@ public class RobotContainer {
     private final Telemetry logger = new Telemetry(MaxSpeed);
 
     private final CommandXboxController joystick = new CommandXboxController(0);
+    private final CommandXboxController joystick2 = new CommandXboxController(1);
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
@@ -99,6 +101,12 @@ public class RobotContainer {
         joystick.leftTrigger().onTrue(intake.setIntakeStateCommand());
         joystick.rightBumper().onTrue(intake.setShootStateCommand());
         joystick.rightTrigger().whileTrue(intake.setFeedSpeed(joystick::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
+
+        Trigger oss = joystick.b().whileTrue(new OsscilateCommand(drivetrain));
+
+        joystick2.leftTrigger().onTrue(intake.setIntakeStateCommand());
+        joystick2.rightBumper().onTrue(intake.setShootStateCommand());
+        joystick2.rightTrigger().whileTrue(intake.setFeedSpeed(joystick2::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
         
         intake.setDefaultCommand(new IntakeShooterCommand(intake));
 
