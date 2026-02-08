@@ -3,32 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.6924155405405408,
-        "y": 0.509
+        "x": 0.32555421686747,
+        "y": 0.680192771084337
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7794107142857136,
-        "y": 1.5569464285714285
+        "x": 0.5526435025817555,
+        "y": 0.9232106282271938
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "OutpostDrop"
     },
     {
       "anchor": {
-        "x": 2.806,
-        "y": 2.779
+        "x": 4.292313253012049,
+        "y": 0.34143373493975904
       },
       "prevControl": {
-        "x": 2.471678571428571,
-        "y": 1.783696428571428
+        "x": 4.000581110154906,
+        "y": 0.1790408777969018
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "RShoot"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.1668049792531131,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 0.7792531120331899,
+      "rotationDegrees": -144.162
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -42,13 +51,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -144.162
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Right",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

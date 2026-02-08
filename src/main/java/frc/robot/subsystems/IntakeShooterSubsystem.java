@@ -62,13 +62,13 @@ public class IntakeShooterSubsystem implements Subsystem {
                 break;
 
             case intake:
-                setIntakeSpeed(0.5);
+                setIntakeSpeed(0.3);
                 setFeederSpeed(-0.3);
                 break;
 
             case shoot:
                 setIntakeVelocity(Constants.IntakeShooter.highSpeed);
-                if (Math.abs(getShooterVelocity()) > Math.abs((Constants.IntakeShooter.highSpeed * .8))) {
+                if (Math.abs(getShooterVelocity()) > Math.abs((Constants.IntakeShooter.highSpeed * .7))) {
                     setFeederSpeed(feedSpeed);
                 } else {
                     setFeederSpeed(0);
@@ -111,8 +111,8 @@ public class IntakeShooterSubsystem implements Subsystem {
         return new InstantCommand(() -> setShootState());
     }
 
-    public RunCommand setFeedSpeed(DoubleSupplier speed) {
-        return new RunCommand(() -> feedSpeed = speed.getAsDouble());
+    public InstantCommand setFeedSpeed(DoubleSupplier speed) {
+        return new InstantCommand(() -> feedSpeed = speed.getAsDouble());
     }
 
 

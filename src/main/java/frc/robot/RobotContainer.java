@@ -59,7 +59,6 @@ public class RobotContainer {
 
 
         auto = new AutoCommands(intake, drivetrain);
-        NamedCommands.registerCommand("Shoot", intake.setShootStateCommand());
 
         configureBindings();
     }
@@ -100,13 +99,13 @@ public class RobotContainer {
         
         joystick.leftTrigger().onTrue(intake.setIntakeStateCommand());
         joystick.rightBumper().onTrue(intake.setShootStateCommand());
-        joystick.rightTrigger().whileTrue(intake.setFeedSpeed(joystick::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
+        Trigger j1 = joystick.rightTrigger().whileTrue(intake.setFeedSpeed(joystick::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
 
         Trigger oss = joystick.b().whileTrue(new OsscilateCommand(drivetrain));
 
         joystick2.leftTrigger().onTrue(intake.setIntakeStateCommand());
         joystick2.rightBumper().onTrue(intake.setShootStateCommand());
-        joystick2.rightTrigger().whileTrue(intake.setFeedSpeed(joystick2::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
+        Trigger j2 = joystick2.rightTrigger().whileTrue(intake.setFeedSpeed(joystick2::getRightTriggerAxis)).onFalse(intake.setFeedSpeed(() -> 0));
         
         intake.setDefaultCommand(new IntakeShooterCommand(intake));
 
